@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container contact-form">
+        <h1>Contato</h1>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6">
+                <p>Mady Silva</p>
+                <p>Email:- madilenenascim@gmail.com</p>
+                <p>Phone: (21) 97544-0258</p>
+            </div>
+
+            <div class="col-md-6">
+
+                <form id="formulario" method='POST'>
+                        {% csrf_token %}
+
+                    
+                        <label for="">Nome</label>
+                        <input type="text" name="name" class="form-control" placeholder="Digite Seu Nome" id="nomeCliente">
+                    
+                        <label for="">Telefone</label>
+                        <input type="text" name="telefone" class="form-control" placeholder="Digite Seu Telefone sem simbolos e sem espaço" id="telefoneCliente">
+
+                        <label for="">Email</label>
+                        <input type="text" name="email" class="form-control" placeholder="Digite Seu Email" id="emailCliente">
+
+                        <label for="">Menssagem</label>
+                        <textarea class="form-control" name="menssagem" rows="7" placeholder="Se peferir, deixe aqui sua menssagem..." id="msgCliente"></textarea>
+<br>
+                        <!-- <input class="btn btn-primary btn-block" type="button" name="submit" value="Enviar" /> -->
+                        <button class="btn btn-primary btn-block" type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        body {
+            background-image: url(back.jpg);
+            background-size: cover;
+        }
+
+        hr {
+            background: white;
+        }
+
+        .contact-form {
+            background: rgba(0, 0, 0, .6);
+            color: white;
+            margin-top: 100px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 3px grey;
+        }
+    </style>
+
+<script>
+    document.getElementById('formulario').addEventListener('submit', cadastraCliente);
+
+    function cadastraCliente(e) {
+        var nome = document.getElementById('nomeCliente').value;
+        var telefone = document.getElementById('telefoneCliente').value;
+        var email = document.getElementById('emailCliente').value;
+        var menssaem = document.getElementById('msgCliente').value;
+        var time = new Date();
+
+        alert(nome);
+
+        cliente = {
+            nome: nomeCliente,
+            telefone: telefoneCliente,
+            email: emailCliente,
+            hora: time.getHours(),
+            minutos: time.getMinutes(),
+        }
+
+        if (localStorage.getItem('cadastro2') == null) {
+            var clientes = [];
+            clientes.push(clientes);
+            localStorage.setItem('cadastro2', JSON.stringify(clientes));
+        } else {
+            var clientes = JSON.parse(localStorage.getItem('cadastro2'));
+            clientes.push(cliente);
+            localStorage.setItem('cadastro2', JSON.stringfy(clientes));
+        }
+
+        e.preventDefault();
+    }
+
+</script>
+
+</body>
+
+</html>
